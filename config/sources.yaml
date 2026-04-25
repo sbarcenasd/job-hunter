@@ -3,20 +3,20 @@ sources:
   - name: "RemoteOK"
     url: "https://remoteok.com/remote-dev-jobs.rss"
     type: "rss"
-    location: "remote"  # remote | colombia | any
+    location: "remote"
     enabled: false
   
   - name: "LinkedIn Colombia"
     url: "https://news.google.com/rss/search?q=full+stack+developer+site:linkedin.com/jobs&hl=es&gl=co"
     type: "rss"
     location: "colombia"
-    enabled: true
+    enabled: false
   
   - name: "LinkedIn Remoto"
     url: "https://news.google.com/rss/search?q=full+stack+node+site:linkedin.com/jobs&hl=es&gl=mx"
     type: "rss"
     location: "remote"
-    enabled: true
+    enabled: false
   
   - name: "Indeed Colombia"
     url: "https://news.google.com/rss/search?q=desarrollador+full+stack&hl=es&gl=co"
