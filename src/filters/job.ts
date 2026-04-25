@@ -43,11 +43,13 @@ export function filterJobs(
   const seen = new Set<string>();
   const filtered: Job[] = [];
 
+  const allowedLocations = workModes.allowedLocations || [];
+
   for (const job of jobs) {
     if (seen.has(job.link)) continue;
     seen.add(job.link);
 
-const text = `${job.title} ${job.content} ${job.link}`.toLowerCase();
+    const text = `${job.title} ${job.content} ${job.link}`.toLowerCase();
 
     job.salary = extractSalary(text);
     job.workMode = detectWorkMode(text, workModes);
@@ -65,9 +67,13 @@ const text = `${job.title} ${job.content} ${job.link}`.toLowerCase();
     if (matchKeyword && !isExcluded) {
       job.score = scoreJob(job, scoringRules);
       if (job.score >= 0) {
-        // Hybrid solo es válido si es de Colombia
-        if (job.workMode === "hybrid" && job.location !== "colombia") {
-          continue;
+        const isRemote = job.workMode === "remote";
+        
+        if (!isRemote && (job.workMode === "hybrid" || job.workMode === "presencial")) {
+          const hasAllowedLocation = allowedLocations.some((loc) => text.includes(loc.toLowerCase()));
+          if (!hasAllowedLocation) {
+            continue;
+          }
         }
         filtered.push(job);
       }
