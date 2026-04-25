@@ -1,8 +1,9 @@
 import cron from "node-cron";
 
+import { Job } from "./types";
 import { loadConfig } from "./config/loader";
 import { fetchAllRSS } from "./fetchers/rss";
-import { fetchComputrabajo, enrichJobsWithDelay, fetchLinkedInJobs } from "./fetchers/scraper";
+import { enrichJobsWithDelay, fetchScraperSource, fetchComputrabajo } from "./fetchers/scraper";
 import { filterJobs } from "./filters/job";
 import { saveJSON, saveMarkdown, printJobs } from "./utils/export";
 
@@ -16,19 +17,24 @@ async function main() {
   const config = loadConfig();
   const { sources, keywords, exclude, scoring, workModes } = config;
 
-  console.log("📡 Obteniendo de fuentes RSS...");
-  const rssJobs = await fetchAllRSS(sources, MAX_JOBS_PER_FEED);
-  console.log(`   Encontrados ${rssJobs.length} jobs de RSS\n`);
+  const allJobs: Job[] = [];
+
+  for (const source of sources) {
+    if (!source.enabled) continue;
+
+    if (source.type === "rss") {
+      console.log(`📡 Obteniendo de ${source.name} (RSS)...`);
+      const rssJobs = await fetchAllRSS([source], MAX_JOBS_PER_FEED);
+      console.log(`   Encontrados ${rssJobs.length} jobs\n`);
+      allJobs.push(...rssJobs);
+    } else if (source.type === "scraper") {
+      console.log(`🕷️ Obteniendo de ${source.name} (scraper)...`);
+      const scraperJobs = await fetchScraperSource(source, keywords);
+      console.log(`   Encontrados ${scraperJobs.length} jobs\n`);
+      allJobs.push(...scraperJobs);
+    }
+  }
   
-  console.log("🔗 Obteniendo de LinkedIn (scraping)...");
-  const linkedInJobs = await fetchLinkedInJobs(keywords);
-  console.log(`   Encontrados ${linkedInJobs.length} jobs de LinkedIn\n`);
-  
-  console.log("🌐 Obteniendo de Computrabajo...");
-  const computrabajoJobs = await fetchComputrabajo(keywords, 3);
-  console.log(`   Encontrados ${computrabajoJobs.length} jobs de Computrabajo\n`);
-  
-  const allJobs = [...rssJobs, ...linkedInJobs, ...computrabajoJobs];
   console.log(`📊 Total: ${allJobs.length} jobs sin filtrar\n`);
   
   const filtered = filterJobs(allJobs, keywords, exclude, scoring, workModes, MAX_RESULTS);

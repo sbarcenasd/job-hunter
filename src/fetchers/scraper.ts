@@ -1,6 +1,6 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
-import { Job } from "../types";
+import { Job, FeedSource } from "../types";
 
 const SCRAPER_DELAY = 2000;
 
@@ -24,16 +24,21 @@ export async function fetchPageContent(url: string): Promise<string> {
   }
 }
 
-export async function fetchLinkedInJobs(keywords: string[]): Promise<Job[]> {
+export async function fetchScraperSource(source: FeedSource, keywords: string[]): Promise<Job[]> {
   const jobs: Job[] = [];
   
-  const searchUrls = [
-    "https://www.linkedin.com/jobs/search/?keywords=full+stack+developer&location=Colombia&f_TPR=r604800",
-    "https://www.linkedin.com/jobs/search/?keywords=node+developer&location=Latin+America",
-    "https://www.linkedin.com/jobs/search/?keywords=nestjs+developer&remote=yes",
-  ];
+  if (!source.keywords || source.keywords.length === 0) {
+    source.keywords = keywords;
+  }
   
-  for (const url of searchUrls) {
+  const location = source.location === "colombia" ? "Colombia" : 
+                 source.location === "remote" ? "Remote" : "Colombia";
+  
+  for (const keyword of source.keywords) {
+    let url = source.searchUrl || source.url;
+    url = url.replace("{keyword}", encodeURIComponent(keyword));
+    url = url.replace("{location}", encodeURIComponent(location));
+    
     try {
       const html = await fetchPageContent(url);
       
@@ -41,8 +46,8 @@ export async function fetchLinkedInJobs(keywords: string[]): Promise<Job[]> {
       
       const $ = cheerio.load(html);
       
-      $(".job-search-card").each((_, element) => {
-        const title = $(element).find(".job-card-list__title").text().trim() || 
+      $(".job-search-card, .job-card-container").each((_, element) => {
+        const title = $(element).find(".job-card-list__title, .job-card-list__title--link").text().trim() || 
                      $(element).find("h3").first().text().trim();
         let link = $(element).find("a").attr("href") || "";
         
@@ -53,29 +58,25 @@ export async function fetchLinkedInJobs(keywords: string[]): Promise<Job[]> {
           link = "https://www.linkedin.com" + link;
         }
         
-        const company = $(element).find(".job-card-container__company-name").text().trim() ||
-                       $(element).find(".artdeco-entity-lockup__subtitle").text().trim() ||
-                       $(element).find("a").find("img").attr("alt") || "";
-        const location = $(element).find(".job-card-container__metadata-item").text().trim();
+        const company = $(element).find(".job-card-container__company-name, .artdeco-entity-lockup__subtitle").text().trim() || "";
+        const locationText = $(element).find(".job-card-container__metadata-item, .job-card-container__metadata-item").text().trim();
         
         if (title && link && link.includes("/jobs/view/")) {
           jobs.push({
             title: title.trim(),
             link,
-            content: `${title} ${company} ${location}`.toLowerCase(),
-            source: "LinkedIn",
-            location: location.toLowerCase().includes("colombia") ? "colombia" : "remote",
+            content: `${title} ${company} ${locationText}`.toLowerCase(),
+            source: source.name,
+            location: locationText.toLowerCase().includes("colombia") ? "colombia" : "remote",
             score: 0,
             date: new Date().toISOString(),
           });
         }
       });
       
-      if (jobs.length > 0) break;
-      
       await delay(SCRAPER_DELAY);
     } catch (error) {
-      console.error(`Error fetching LinkedIn:`, (error as Error).message);
+      console.error(`Error fetching ${source.name} (${keyword}):`, (error as Error).message);
     }
   }
   

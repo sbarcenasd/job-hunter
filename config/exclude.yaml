@@ -44,10 +44,10 @@ exclude:
   - b2
   - c1
   - "advanced english"
-  - "advanced proficiency in english"
   - "oowlish english program"
   - "english certification"
   - "certificado de inglés"
+  - "Advanced proficiency in English"
   
   # Países NO Latam
   - españa

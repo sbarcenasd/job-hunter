@@ -23,3 +23,23 @@ sources:
     type: "rss"
     location: "colombia"
     enabled: false
+
+  # Scrapers
+  - name: "LinkedIn Scraping"
+    type: "scraper"
+    location: "colombia"
+    enabled: true
+    searchUrl: "https://www.linkedin.com/jobs/search/?keywords={keyword}&location={location}&f_TPR=r604800"
+    keywords:
+      - "full stack developer"
+      - "nodejs developer"
+      - "nestjs developer"
+  
+  - name: "Computrabajo"
+    type: "scraper"
+    location: "colombia"
+    enabled: false
+    url: "https://www.computrabajo.com.co/ofertas-de-trabajo/?q={keyword}"
+    keywords:
+      - "desarrollador full stack"
+      - "nodejs"
