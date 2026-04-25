@@ -24,6 +24,24 @@ exclude:
   - java
   - springboot
   - laravel
+  - movile
+  - mobile
+  - android
+  - ios
+  - flutter
+
+  # Ubicaciones no deseadas (fuera de allowed locations)
+  - bucaramanga
+  - santander
+  - cali
+  - valle
+  - barranquilla
+  - cartagena
+  - pereira
+  - ibagué
+  - ibague
+  - tunez
+  - "puerto wilches"
   
   # Roles no deseados
   - soporte
@@ -41,8 +59,8 @@ exclude:
   - "fluent english"
   - "english required"
   - "must speak english"
-  - b2
-  - c1
+  - "b2"
+  - "c1"
   - "advanced english"
   - "oowlish english program"
   - "english certification"
@@ -51,6 +69,7 @@ exclude:
   - "Advanced English proficiency"
   - "English proficiency"
   - "English-speaking"
+  - "Intermediate-advanced English"
   
   # Empresas no deseadas (body shops)
   - "jobs-ai"
