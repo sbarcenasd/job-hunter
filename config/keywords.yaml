@@ -1,0 +1,37 @@
+# Keywords de búsqueda
+keywords:
+  # Stack principal
+  - nestjs
+  - node
+  - typescript
+  - full stack
+  - backend
+  - saas
+  - python
+  - go
+  
+  # Frontend
+  - react
+  - nextjs
+  - vue
+  - angular
+  - tailwindcss
+  - shadcn
+  - astro
+  
+  # APIs & Databases
+  - graphql
+  - rest api
+  - postgres
+  - mongodb
+  - redis
+  - drizzle
+  
+  # DevOps
+  - docker
+  - aws
+  - gcp
+  - kubernetes
+  - ci/cd
+  - vercel
+  - railway

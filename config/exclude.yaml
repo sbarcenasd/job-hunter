@@ -1,0 +1,64 @@
+# Términos a excluir
+exclude:
+  # Vacantes cerradas
+  - "ya no se aceptan solicitudes"
+  - "no longer accepting"
+  - "solicitudes cerradas"
+  - "application closed"
+  
+  # Nivel (no buscar como junior)
+  - junior
+  - jr
+  - intern
+  - trainee
+  - entry level
+  
+  # Tecnologías no deseadas
+  - php
+  - wordpress
+  - cobol
+  - .net
+  - magento
+  - drupal
+  - joomla
+  - java
+  - springboot
+  - laravel
+  
+  # Roles no deseados
+  - soporte
+  - helpdesk
+  - "call center"
+  - "atención al cliente"
+  - "customer support"
+  - "technical support"
+  
+  # Idiomas (solo escribir, no hablar)
+  - "spoken english"
+  - "inglés hablado"
+  - "english speaking"
+  - "native english"
+  - "fluent english"
+  - "english required"
+  - "must speak english"
+  - b2
+  - c1
+  - "advanced english"
+  - "advanced proficiency in english"
+  - "oowlish english program"
+  - "english certification"
+  - "certificado de inglés"
+  
+  # Países NO Latam
+  - españa
+  - barcelona
+  - madrid
+  - usa
+  - "united states"
+  - canada
+  - "reino unido"
+  - uk
+  - germany
+  - alemania
+  - francia
+  - europa

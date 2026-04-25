@@ -1,0 +1,22 @@
+# Modos de trabajo - Keywords para detección
+workModes:
+  remote:
+    - remote
+    - remoto
+    - "100% remoto"
+    - "work from home"
+    - "desde casa"
+  
+  hybrid:
+    - hybrid
+    - híbrido
+    - hibrido
+    - mixed
+    - "presencial parcial"
+  
+  presencial:
+    - presencial
+    - on-site
+    - "on site"
+    - oficina
+    - presencialmente
