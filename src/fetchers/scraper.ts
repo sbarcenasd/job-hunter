@@ -2,9 +2,9 @@ import axios from "axios";
 import * as cheerio from "cheerio";
 import { Job, FeedSource } from "../types";
 
-const SCRAPER_DELAY = 2000;
+export const SCRAPER_DELAY = 2000;
 
-async function delay(ms: number): Promise<void> {
+export function delay(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
@@ -173,36 +173,54 @@ export async function enrichJobsWithDelay(jobs: Job[], maxToEnrich: number = 10)
   return enriched;
 }
 
-export async function fetchComputrabajo(keywords: string[], maxKeywords: number = 3): Promise<Job[]> {
-  const baseUrl = "https://www.computrabajo.com.co/ofertas-de-trabajo/";
+export async function fetchComputrabajo(keywords: string[], maxKeywords: number = 3, maxJobs: number = 10): Promise<Job[]> {
+  const baseUrl = "https://co.computrabajo.com/trabajo-de-";
   const jobs: Job[] = [];
+  const seenLinks = new Set<string>();
+  let jobCount = 0;
 
   for (const keyword of keywords.slice(0, maxKeywords)) {
+    if (jobCount >= maxJobs) break;
     try {
-      const url = `${baseUrl}?q=${encodeURIComponent(keyword)}`;
+      const url = `${baseUrl}${encodeURIComponent(keyword)}`;
       const html = await fetchPageContent(url);
 
       if (!html) continue;
 
       const $ = cheerio.load(html);
-      $(".box_offer").each((_, element) => {
-        const title = $(element).find(".title_offer a").text().trim();
-        const link = "https://www.computrabajo.com.co" + $(element).find(".title_offer a").attr("href");
-        const content = $(element).find(".description").text().trim();
-
+      $("h2.fs18").each((_, element) => {
+        if (jobCount >= maxJobs) return false;
+        
+        const titleLink = $(element).find("a.js-o-link");
+        const title = titleLink.text().trim() || $(element).text().trim();
+        let link = titleLink.attr("href") || "";
+        
+        if (link && !link.startsWith("http")) {
+          link = "https://co.computrabajo.com" + link;
+        }
+        
+        if (seenLinks.has(link)) return;
+        seenLinks.add(link);
+        
+        const parent = $(element).parent();
+        const company = parent.find(".fc_mg span, .fc_tertiary").first().text().trim();
+        const location = parent.find(".fc_dest, .location-text, [class*='location']").text().trim();
+        
         if (title && link) {
           jobs.push({
             title,
             link,
-            content: content.toLowerCase(),
+            content: `${title} ${company} ${location}`.toLowerCase(),
             source: "Computrabajo",
             location: "colombia",
             score: 0,
             date: new Date().toISOString(),
           });
+          jobCount++;
         }
       });
-
+      
+      if (jobCount >= maxJobs) break;
       await delay(SCRAPER_DELAY);
     } catch (error) {
       console.error(`Error fetching Computrabajo (${keyword}):`, (error as Error).message);
@@ -210,4 +228,43 @@ export async function fetchComputrabajo(keywords: string[], maxKeywords: number 
   }
 
   return jobs;
+}
+
+function extractComputrabajoDetails(html: string): { salary?: string; conditions?: string; location?: string } {
+  const $ = cheerio.load(html);
+  
+  let salary: string | undefined;
+  let conditions: string | undefined;
+  let location: string | undefined;
+  
+  const allText = $("body").text();
+  
+  const salaryMatch = allText.match(/Salario[:\s]*[\$][\d,.]+|[\d,.]+\s*(mil|pesos)/i);
+  if (salaryMatch) salary = salaryMatch[0];
+  
+  const condMatch = allText.match(/Condiciones[:\s]*[^\n]+/i);
+  if (condMatch) conditions = condMatch[0];
+  
+  const locMatch = allText.match(/ubicaci[óo]n[:\s]*[^\n]+/i);
+  if (locMatch) location = locMatch[0];
+  
+  return { salary, conditions, location };
+}
+
+export async function enrichComputrabajoJob(job: Job): Promise<Job> {
+  const html = await fetchPageContent(job.link);
+  
+  if (!html) return job;
+  
+  const extracted = extractComputrabajoDetails(html);
+  
+  if (extracted.salary) {
+    job.salary = extracted.salary;
+  }
+  
+  if (extracted.conditions) {
+    job.content += " " + extracted.conditions.toLowerCase();
+  }
+  
+  return job;
 }
