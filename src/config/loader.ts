@@ -34,7 +34,7 @@ export function loadScoring(): Record<string, number> {
 
 export function loadWorkModes(): WorkModes {
   const config = loadYaml("workmodes.yaml");
-  return config?.workModes || { remote: [], hybrid: [], presencial: [] };
+  return config?.workModes || { remote: [], hybrid: [], presencial: [], allowedLocations: [] };
 }
 
 export function loadConfig() {

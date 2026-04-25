@@ -24,6 +24,7 @@ export interface WorkModes {
   remote: string[];
   hybrid: string[];
   presencial: string[];
+  allowedLocations?: string[];
 }
 
 export interface ConfigFiles {

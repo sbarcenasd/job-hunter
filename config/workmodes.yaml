@@ -20,3 +20,17 @@ workModes:
     - "on site"
     - oficina
     - presencialmente
+
+# Ubicaciones permitidas para presencial/hibrido
+allowedLocations:
+  - bogotá
+  - bogota
+  - cundinamarca
+  - antioquia
+  - medellín
+  - medellin
+  - caldas
+  - manizales
+  - Antioquia
+  - Risaralda
+  - Pereira
