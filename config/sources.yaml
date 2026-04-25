@@ -28,7 +28,7 @@ sources:
   - name: "LinkedIn Scraping"
     type: "scraper"
     location: "colombia"
-    enabled: true
+    enabled: false
     searchUrl: "https://www.linkedin.com/jobs/search/?keywords={keyword}&location={location}&f_TPR=r604800"
     keywords:
       - "full stack developer"
@@ -38,8 +38,9 @@ sources:
   - name: "Computrabajo"
     type: "scraper"
     location: "colombia"
-    enabled: false
-    url: "https://www.computrabajo.com.co/ofertas-de-trabajo/?q={keyword}"
+    enabled: true
+    url: "https://co.computrabajo.com/trabajo-de-{keyword}"
     keywords:
-      - "desarrollador full stack"
+      - "desarrollador-full-stack"
       - "nodejs"
+      - "full-stack-developer"
