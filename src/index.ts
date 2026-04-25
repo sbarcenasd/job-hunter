@@ -7,9 +7,9 @@ import { enrichJobsWithDelay, fetchScraperSource, fetchComputrabajo } from "./fe
 import { filterJobs } from "./filters/job";
 import { saveJSON, saveMarkdown, printJobs } from "./utils/export";
 
-const MAX_JOBS_PER_FEED = 3;
-const MAX_RESULTS = 15;
-const MAX_TO_ENRICH = 3;
+const MAX_JOBS_PER_FEED = 5;
+const MAX_RESULTS = 5;
+const MAX_TO_ENRICH = 5;
 
 async function main() {
   console.log("🔍 Buscando empleos...\n");

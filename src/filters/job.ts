@@ -47,7 +47,7 @@ export function filterJobs(
     if (seen.has(job.link)) continue;
     seen.add(job.link);
 
-    const text = `${job.title} ${job.content}`.toLowerCase();
+const text = `${job.title} ${job.content} ${job.link}`.toLowerCase();
 
     job.salary = extractSalary(text);
     job.workMode = detectWorkMode(text, workModes);

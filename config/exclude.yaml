@@ -48,6 +48,14 @@ exclude:
   - "english certification"
   - "certificado de inglés"
   - "Advanced proficiency in English"
+  - "Advanced English proficiency"
+  - "English proficiency"
+  - "English-speaking"
+  
+  # Empresas no deseadas (body shops)
+  - "jobs-ai"
+  - "bairesdev"
+  - "quik-hire"
   
   # Países NO Latam
   - españa
