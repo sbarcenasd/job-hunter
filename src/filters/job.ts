@@ -66,17 +66,15 @@ export function filterJobs(
 
     if (matchKeyword && !isExcluded) {
       job.score = scoreJob(job, scoringRules);
-      if (job.score >= 0) {
-        const isRemote = job.workMode === "remote";
-        
-        if (!isRemote && (job.workMode === "hybrid" || job.workMode === "presencial")) {
-          const hasAllowedLocation = allowedLocations.some((loc) => text.includes(loc.toLowerCase()));
-          if (!hasAllowedLocation) {
-            continue;
-          }
+      const isRemote = job.workMode === "remote";
+      
+      if (!isRemote && (job.workMode === "hybrid" || job.workMode === "presencial")) {
+        const hasAllowedLocation = allowedLocations.some((loc) => text.includes(loc.toLowerCase()));
+        if (!hasAllowedLocation) {
+          continue;
         }
-        filtered.push(job);
       }
+      filtered.push(job);
     }
   }
 
