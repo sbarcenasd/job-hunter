@@ -70,13 +70,14 @@ exclude:
   - "English proficiency"
   - "English-speaking"
   - "Intermediate-advanced English"
+  - verbal communication skills in English
   
   # Empresas no deseadas (body shops)
   - "jobs-ai"
   - "bairesdev"
   - "quik-hire"
   
-  # Países NO Latam
+# Países NO Latam
   - españa
   - barcelona
   - madrid
@@ -89,3 +90,44 @@ exclude:
   - alemania
   - francia
   - europa
+
+  # NO vacantes (artículos, blogs, cursos)
+  - "becas"
+  - "becas gratuitas"
+  - "formarse"
+  - "aprender"
+  - "curso"
+  - "guía"
+  - "guia"
+  - "capacitación"
+  - "training"
+  - " Scholarship"
+  - " bootcamp"
+  - "conarsa"
+  - "forbes.co"
+  - "keepcoding"
+  - "blog/"
+  - "articulo"
+  - "/blog"
+  - "/noticias"
+  - "universidades"
+  - "universidad"
+  - "itba"
+  - "platzi"
+  - "codigofacilito"
+  - "articulación"
+  - "articulacion"
+  - "habilidades"
+  - " ECONOMIA"
+  - " | "
+  - "culminaron"
+  - "para destacar"
+  - "cómo"
+  - " nnda-"
+  - "noticia:"
+  - "el mercado"
+  - "en 2025"
+  - "en 2026"
+  - "empleo en"
+  - "trabajo en"
+  - "convocatoria"
