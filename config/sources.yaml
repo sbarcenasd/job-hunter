@@ -19,21 +19,34 @@ sources:
     enabled: false
   
   - name: "Indeed Colombia"
-    url: "https://news.google.com/rss/search?q=desarrollador+full+stack&hl=es&gl=co"
-    type: "rss"
+    type: "scraper"
     location: "colombia"
-    enabled: false
+    enabled: true
+    url: "https://co.indeed.com/jobs?q={keyword}"
+    keywords:
+      - "desarrollador full stack"
+      - "nodejs"
+      - "full stack developer"
 
-  # Scrapers
-  - name: "LinkedIn Scraping"
+  - name: "LinkedIn Playwright"
     type: "scraper"
     location: "colombia"
     enabled: false
-    searchUrl: "https://www.linkedin.com/jobs/search/?keywords={keyword}&location={location}&f_TPR=r604800"
+    url: "https://www.linkedin.com/jobs/search/?keywords={keyword}&location=Colombia"
     keywords:
-      - "full stack developer"
-      - "nodejs developer"
-      - "nestjs developer"
+      - "full stack"
+      - "nodejs"
+      - "nestjs"
+  
+  - name: "LinkedIn Manual"
+    type: "scraper"
+    location: "colombia"
+    enabled: false
+    url: "https://www.linkedin.com/jobs/search/?keywords={keyword}&location=Colombia"
+    keywords:
+      - "full stack"
+      - "nodejs"
+      - "nestjs"
   
   - name: "Computrabajo"
     type: "scraper"
