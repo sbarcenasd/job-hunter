@@ -58,37 +58,45 @@ export async function fetchLinkedInPlaywright(keywords: string[], maxKeywords: n
       const jobCards = await page.locator('.job-card-container, .jobs-search-results__list-item').all();
       console.log(`  Found ${jobCards.length} job cards`);
       
-      for (const card of jobCards) {
-        if (jobs.length >= maxJobs) break;
-        
-        try {
-          // Find the anchor link inside the card
-          const anchor = card.locator('a').first();
-          let link = await anchor.getAttribute('href');
-          if (!link) {
-            // Try to get it from card itself
-            link = await card.getAttribute('href');
-          }
-          if (!link || seenLinks.has(link!!)) continue;
-          
-          const title = await card.textContent() || 'LinkedIn Job';
-          seenLinks.add(link);
-          
-          const isRemote = title.toLowerCase().includes('remote') || title.toLowerCase().includes('remoto');
-          
-          jobs.push({
-            title: 'LinkedIn Job',
-            link: link.startsWith('http') ? link : 'https://www.linkedin.com' + link,
-            content: title.toLowerCase(),
-            source: 'LinkedIn',
-            location: isRemote ? 'remote' : 'colombia',
-            score: 0,
-            date: new Date().toISOString()
-          });
-        } catch (e) {
-          // Skip bad cards
-        }
-      }
+       for (const card of jobCards) {
+         if (jobs.length >= maxJobs) break;
+         
+         try {
+           // Extract job title from card
+           let title = '';
+           try {
+             title = await card.locator('.job-card-list__title, .base-search-card__title, h3, [data-artifact-id="job-title"]').first().textContent({ timeout: 3000 }) || '';
+           } catch {
+             title = await card.locator('a').first().textContent({ timeout: 3000 }) || '';
+           }
+           title = title.trim();
+           if (!title) title = 'LinkedIn Job';
+           
+           // Find the anchor link inside the card
+           const anchor = card.locator('a').first();
+           let link = await anchor.getAttribute('href');
+           if (!link) {
+             link = await card.getAttribute('href');
+           }
+           if (!link || seenLinks.has(link)) continue;
+           
+           seenLinks.add(link);
+           
+           const isRemote = title.toLowerCase().includes('remote') || title.toLowerCase().includes('remoto');
+           
+           jobs.push({
+             title: title,
+             link: link.startsWith('http') ? link : 'https://www.linkedin.com' + link,
+             content: title.toLowerCase(),
+             source: 'LinkedIn',
+             location: isRemote ? 'remote' : 'colombia',
+             score: 0,
+             date: new Date().toISOString()
+           });
+         } catch (e) {
+           // Skip bad cards
+         }
+       }
       
       console.log(`  Collected ${jobs.length} jobs`);
       
