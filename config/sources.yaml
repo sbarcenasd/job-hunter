@@ -10,13 +10,13 @@ sources:
     url: "https://news.google.com/rss/search?q=full+stack+developer+site:linkedin.com/jobs&hl=es&gl=co"
     type: "rss"
     location: "colombia"
-    enabled: false
+    enabled: true
   
   - name: "LinkedIn Remoto"
-    url: "https://news.google.com/rss/search?q=full+stack+node+site:linkedin.com/jobs&hl=es&gl=mx"
+    url: "https://news.google.com/rss/search?q=full+stack+developer+site:linkedin.com/jobs&hl=es&gl=mx"
     type: "rss"
     location: "remote"
-    enabled: false
+    enabled: true
    
   - name: "Indeed Colombia"
     type: "scraper"
