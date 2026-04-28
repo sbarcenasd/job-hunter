@@ -72,6 +72,14 @@ exclude:
   - "Intermediate-advanced English"
   - verbal communication skills in English
   - Bilingue
+  - bilingue
+  - bilingüe
+  - "Upper-Intermediate"
+  - "upper intermediate"
+  - "English proficiency —"
+  - "proficiency in English"
+  - "inglés avanzado"
+  - "nivel de inglés"
   
   # Empresas no deseadas (body shops)
   - "jobs-ai"
