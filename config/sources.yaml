@@ -17,7 +17,7 @@ sources:
     type: "rss"
     location: "remote"
     enabled: false
-  
+   
   - name: "Indeed Colombia"
     type: "scraper"
     location: "colombia"
@@ -25,18 +25,23 @@ sources:
     url: "https://co.indeed.com/jobs?q={keyword}"
     keywords:
       - "desarrollador full stack"
-      - "nodejs"
-      - "full stack developer"
-
+      - "node.js"
+      - "nestjs"
+      - "react"
+      - "typescript"
+  
   - name: "LinkedIn Playwright"
     type: "scraper"
     location: "colombia"
-    enabled: false
+    enabled: true
     url: "https://www.linkedin.com/jobs/search/?keywords={keyword}&location=Colombia"
     keywords:
-      - "full stack"
-      - "nodejs"
+      - "desarrollador full stack"
+      - "full stack developer"
+      - "node.js"
+      - "typescript"
       - "nestjs"
+      - "react"
   
   - name: "LinkedIn Manual"
     type: "scraper"
@@ -44,16 +49,20 @@ sources:
     enabled: false
     url: "https://www.linkedin.com/jobs/search/?keywords={keyword}&location=Colombia"
     keywords:
-      - "full stack"
-      - "nodejs"
+      - "full stack developer"
+      - "node.js"
+      - "typescript"
       - "nestjs"
+      - "react"
   
   - name: "Computrabajo"
     type: "scraper"
     location: "colombia"
-    enabled: true
+    enabled: false
     url: "https://co.computrabajo.com/trabajo-de-{keyword}"
     keywords:
-      - "desarrollador-full-stack"
-      - "nodejs"
-      - "full-stack-developer"
+      - "desarrollador full stack"
+      - "node.js"
+      - "nestjs"
+      - "react"
+      - "typescript"

@@ -3,18 +3,26 @@ keywords:
   # Stack principal
   - nestjs
   - node
+  - node.js
   - typescript
+  - typecript
   - full stack
+  - full stack developer
   - backend
+  - back-end
   - saas
   - python
   - go
   
   # Frontend
   - react
+  - reactjs
   - nextjs
+  - next.js
   - vue
+  - vuejs
   - angular
+  - angularjs
   - tailwindcss
   - shadcn
   - astro
@@ -22,16 +30,23 @@ keywords:
   # APIs & Databases
   - graphql
   - rest api
+  - restful
   - postgres
+  - postgresql
   - mongodb
   - redis
   - drizzle
+  - orm
   
   # DevOps
   - docker
   - aws
+  - amazon web services
   - gcp
+  - google cloud
   - kubernetes
+  - k8s
   - ci/cd
   - vercel
   - railway
+  - devops
