@@ -12,6 +12,23 @@ export function extractSalary(text: string): string {
   return match ? match[0] : "";
 }
 
+// Filtro rápido solo por título - se ejecuta antes del enriquecimiento
+export function quickFilterByTitle(jobs: Job[], exclude: string[]): Job[] {
+  return jobs.filter(job => {
+    const titleLower = job.title.toLowerCase();
+    const isExcluded = exclude.some(term => {
+      const ex = term.replace(/\//g, "").toLowerCase();
+      return titleLower.includes(ex);
+    });
+    
+    if (isExcluded) {
+      console.log(`     ⏭️  Skipping (title match): ${job.title.slice(0, 50)}`);
+    }
+    
+    return !isExcluded;
+  });
+}
+
 export function scoreJob(job: Job, scoringRules: Record<string, number>): number {
   let s = 0;
   const text = `${job.title} ${job.content}`.toLowerCase();
