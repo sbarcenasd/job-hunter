@@ -9,7 +9,7 @@ function randomDelay() {
   return Math.floor(Math.random() * 3000) + 2000;
 }
 
-export async function fetchLinkedInPlaywright(keywords: string[], maxKeywords: number = 3, maxJobs: number = 10, email?: string, password?: string, excludeTerms: string[] = []): Promise<Job[]> {
+export async function fetchLinkedInPlaywright(keywords: string[], maxKeywords: number = 10, maxJobs: number = 10, email?: string, password?: string, excludeTerms: string[] = []): Promise<Job[]> {
   const jobs: Job[] = [];
   const seenLinks = new Set<string>();
   let browser = null;
@@ -96,23 +96,26 @@ export async function fetchLinkedInPlaywright(keywords: string[], maxKeywords: n
       if (jobs.length >= maxJobs) break;
       
       console.log(`🔍 Searching: ${keyword}`);
-      await page.goto(`https://www.linkedin.com/jobs/search/?keywords=${encodeURIComponent(keyword)}&location=Colombia`, { waitUntil: 'domcontentloaded', timeout: 45000 });
-      await page.waitForTimeout(3000);
       
-      // Scroll para cargar más ofertas (lazy loading)
-      for (let i = 0; i < 3; i++) {
-        await page.evaluate("window.scrollBy(0, 800)");
-        await page.waitForTimeout(1000);
-      }
-      await page.waitForTimeout(2000);
-      
-      // Get job cards using Playwright
-      const jobCards = await page.locator('.job-card-container, .jobs-search-results__list-item').all();
-      console.log(`  Found ${jobCards.length} job cards`);
-      
+      // Try multiple pages using start= parameter (LinkedIn pagination)
+      for (let start = 0; start < 50 && jobs.length < maxJobs; start += 10) {
+        const url = start === 0 
+          ? `https://www.linkedin.com/jobs/search/?keywords=${encodeURIComponent(keyword)}&location=Colombia`
+          : `https://www.linkedin.com/jobs/search/?keywords=${encodeURIComponent(keyword)}&location=Colombia&start=${start}`;
+        
+        console.log(`  Page start=${start}`);
+        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 45000 });
+        await page.waitForTimeout(3000);
+        
+        // Get job cards using Playwright
+        const jobCards = await page.locator('.job-card-container, .jobs-search-results__list-item').all();
+        console.log(`    Found ${jobCards.length} job cards`);
+        
+        if (jobCards.length === 0) break; // No more pages
+       
         for (const card of jobCards) {
           if (jobs.length >= maxJobs) break;
-          
+           
             try {
               // Extract job title from card
               let title = '';
@@ -164,13 +167,14 @@ export async function fetchLinkedInPlaywright(keywords: string[], maxKeywords: n
           } catch (e) {
             // Skip bad cards
           }
-        }
-      
+        } // End for card
+      } // End for pagination
+       
       console.log(`  Collected ${jobs.length} jobs (after title filter)`);
       
       if (jobs.length >= maxJobs) break;
       await page.waitForTimeout(randomDelay());
-    }
+    } // End for keyword
   } catch (error) {
     console.error("❌ LinkedIn error:", (error as Error).message);
   } finally {
