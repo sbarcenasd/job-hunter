@@ -1,33 +1,55 @@
 # Scoring categories - 0 to 10 points total
 
 scoring:
-  # Stack Principal (max 4 pts)
-  nestjs: 2
+  # Stack Principal (max 4 pts) - Your main expertise
+  nestjs: 3
   typescript: 1.5
   node: 0.5
   express: 0.5
 
-  # Frontend (max 2 pts)
+  # Frontend (max 2 pts) - Your experience
   nextjs: 1
   react: 1
   vue: 0.5
-  angular: 0.5
-  astro: 0.3
+  angular: 0.75
+  astro: 0.5
+  tailwindcss: 0.25
+  shadcn: 0.25
 
-  # Bonus Tech (max 2 pts)
+  # Database (max 1 pt) - Your stack
+  postgres: 0.5
+  postgresql: 0.5
+  mongodb: 0.25
+  drizzle: 0.5
+
+  # Cloud & Infra (max 1.5 pts) - Your experience
   graphql: 0.5
   saas: 0.5
-  postgres: 0.25
-  postgresql: 0.25
-  mongodb: 0.25
   redis: 0.25
-  drizzle: 0.25
   docker: 0.25
   aws: 0.25
   gcp: 0.25
+  azure: 0.5
   kubernetes: 0.25
   vercel: 0.25
   railway: 0.25
+
+  # Testing
+  jest: 0.25
+  testing: 0.25
+
+  # AI & ML (max 3 pts) - Your differentiator
+  openai: 0.5
+  chatgpt: 0.5
+  gpt: 0.25
+  claude: 0.5
+  gemini: 0.5
+  opencode: 0.5
+  copilot: 0.25
+  ai-agents: 0.75
+  llm: 0.25
+  prompt-engineering: 0.25
+  ai-assisted: 0.5
 
   # Learning only (0 pts)
   python: 0

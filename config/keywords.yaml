@@ -13,6 +13,7 @@ keywords:
   - saas
   - python
   - go
+  - express
   
   # Frontend
   - react
@@ -38,15 +39,35 @@ keywords:
   - drizzle
   - orm
   
-  # DevOps
-  - docker
-  - aws
-  - amazon web services
-  - gcp
-  - google cloud
-  - kubernetes
-  - k8s
-  - ci/cd
-  - vercel
-  - railway
-  - devops
+   # DevOps
+   - docker
+   - aws
+   - amazon web services
+   - gcp
+   - kubernetes
+   - ci/cd
+   - vercel
+   - railway
+   - devops
+   
+   # AI & ML
+   - ai
+   - artificial intelligence
+   - machine learning
+   - ml
+   - deep learning
+   - llm
+   - large language model
+   - gpt
+   - chatgpt
+   - claude
+   - gemini
+   - opencode
+   - copilot
+   - github copilot
+   - ai agents
+   - ai-assisted
+   - ai assisted
+   - prompt engineering
+   - generative ai
+   - genai

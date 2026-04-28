@@ -1,68 +1,68 @@
 # Configuración de Fuentes de Empleo
 sources:
-  - name: "RemoteOK"
-    url: "https://remoteok.com/remote-dev-jobs.rss"
-    type: "rss"
-    location: "remote"
+  - name: RemoteOK
+    url: https://remoteok.com/remote-dev-jobs.rss
+    type: rss
+    location: remote
     enabled: false
   
-  - name: "LinkedIn Colombia"
-    url: "https://news.google.com/rss/search?q=full+stack+developer+site:linkedin.com/jobs&hl=es&gl=co"
-    type: "rss"
-    location: "colombia"
+  - name: LinkedIn Colombia
+    url: https://news.google.com/rss/search?q=full+stack+developer+site:linkedin.com/jobs&hl=es&gl=co
+    type: rss
+    location: colombia
+    enabled: false
+  
+  - name: LinkedIn Remoto
+    url: https://news.google.com/rss/search?q=full+stack+developer+site:linkedin.com/jobs&hl=es&gl=mx
+    type: rss
+    location: remote
+    enabled: false
+    
+  - name: Indeed Colombia
+    type: scraper
+    location: colombia
+    enabled: false
+    url: https://co.indeed.com/jobs?q={keyword}
+    keywords:
+      - desarrollador full stack
+      - node.js
+      - nestjs
+      - react
+      - typescript
+  
+  - name: LinkedIn Playwright
+    type: scraper
+    location: colombia
     enabled: true
+    url: https://www.linkedin.com/jobs/search/?keywords={keyword}&location=Colombia
+    keywords:
+      - desarrollador full stack
+      - full stack developer
+      - node.js
+      - typescript
+      - nestjs
+      - react
   
-  - name: "LinkedIn Remoto"
-    url: "https://news.google.com/rss/search?q=full+stack+developer+site:linkedin.com/jobs&hl=es&gl=mx"
-    type: "rss"
-    location: "remote"
-    enabled: true
-   
-  - name: "Indeed Colombia"
-    type: "scraper"
-    location: "colombia"
+  - name: LinkedIn Manual
+    type: scraper
+    location: colombia
     enabled: false
-    url: "https://co.indeed.com/jobs?q={keyword}"
+    url: https://www.linkedin.com/jobs/search/?keywords={keyword}&location=Colombia
     keywords:
-      - "desarrollador full stack"
-      - "node.js"
-      - "nestjs"
-      - "react"
-      - "typescript"
+      - full stack developer
+      - node.js
+      - typescript
+      - nestjs
+      - react
   
-  - name: "LinkedIn Playwright"
-    type: "scraper"
-    location: "colombia"
-    enabled: true
-    url: "https://www.linkedin.com/jobs/search/?keywords={keyword}&location=Colombia"
-    keywords:
-      - "desarrollador full stack"
-      - "full stack developer"
-      - "node.js"
-      - "typescript"
-      - "nestjs"
-      - "react"
-  
-  - name: "LinkedIn Manual"
-    type: "scraper"
-    location: "colombia"
+  - name: Computrabajo
+    type: scraper
+    location: colombia
     enabled: false
-    url: "https://www.linkedin.com/jobs/search/?keywords={keyword}&location=Colombia"
+    url: https://co.computrabajo.com/trabajo-de-{keyword}
     keywords:
-      - "full stack developer"
-      - "node.js"
-      - "typescript"
-      - "nestjs"
-      - "react"
-  
-  - name: "Computrabajo"
-    type: "scraper"
-    location: "colombia"
-    enabled: false
-    url: "https://co.computrabajo.com/trabajo-de-{keyword}"
-    keywords:
-      - "desarrollador full stack"
-      - "node.js"
-      - "nestjs"
-      - "react"
-      - "typescript"
+      - desarrollador full stack
+      - node.js
+      - nestjs
+      - react
+      - typescript
