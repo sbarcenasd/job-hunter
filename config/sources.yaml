@@ -21,7 +21,7 @@ sources:
   - name: "Indeed Colombia"
     type: "scraper"
     location: "colombia"
-    enabled: true
+    enabled: false
     url: "https://co.indeed.com/jobs?q={keyword}"
     keywords:
       - "desarrollador full stack"
