@@ -23,6 +23,9 @@ Thumbs.db
 # But keep examples
 !.env.example
 
+# LinkedIn session (contains cookies)
+linkedin-session.json
+
 # IDE
 .vscode/
 .idea/
