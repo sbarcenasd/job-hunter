@@ -1,14 +1,12 @@
 # Términos a excluir
 exclude:
   # Vacantes cerradas
-  - "ya no se aceptan solicitudes"
-  - "no longer accepting"
-  - "solicitudes cerradas"
-  - "application closed"
+  - ya no se aceptan solicitudes
+  - no longer accepting
+  - solicitudes cerradas
+  - application closed
   
   # Nivel (no buscar como junior)
-  - junior
-  - jr
   - intern
   - trainee
   - entry level
@@ -21,19 +19,18 @@ exclude:
   - magento
   - drupal
   - joomla
-  - java
-  - springboot
   - laravel
   - movile
   - mobile
   - android
   - ios
   - flutter
-
+  - unity
+  - unreal
+  
   # Ubicaciones no deseadas (fuera de allowed locations)
   - bucaramanga
   - santander
-  - cali
   - valle
   - barranquilla
   - cartagena
@@ -41,103 +38,95 @@ exclude:
   - ibagué
   - ibague
   - tunez
-  - "puerto wilches"
+  - puerto wilches
   
   # Roles no deseados
   - soporte
   - helpdesk
-  - "call center"
-  - "atención al cliente"
-  - "customer support"
-  - "technical support"
+  - call center
+  - atención al cliente
+  - customer support
+  - technical support
   
   # Idiomas (solo escribir, no hablar)
-  - "spoken english"
-  - "inglés hablado"
-  - "english speaking"
-  - "native english"
-  - "fluent english"
-  - "english required"
-  - "must speak english"
-  - "b2"
-  - "c1"
-  - "advanced english"
-  - "oowlish english program"
-  - "english certification"
-  - "certificado de inglés"
-  - "Advanced proficiency in English"
-  - "Advanced English proficiency"
-  - "English proficiency"
-  - "English-speaking"
-  - "Intermediate-advanced English"
+  - spoken english
+  - inglés hablado
+  - english speaking
+  - native english
+  - fluent english
+  - english required
+  - must speak english
+  - b2
+  - c1
+  - advanced english
+  - english certification
+  - certificado de inglés
+  - Advanced proficiency in English
+  - Advanced English proficiency
+  - English proficiency
+  - English-speaking
+  - Intermediate-advanced English
   - verbal communication skills in English
   - Bilingue
   - bilingue
   - bilingüe
-  - "Upper-Intermediate"
-  - "upper intermediate"
-  - "English proficiency —"
-  - "proficiency in English"
-  - "inglés avanzado"
-  - "nivel de inglés"
+  - Upper-Intermediate
+  - upper intermediate
+  - English proficiency —
+  - proficiency in English
+  - inglés avanzado
+  - nivel de inglés
   
   # Empresas no deseadas (body shops)
-  - "jobs-ai"
+  - jobs-ai
   - Jobs Ai
-  - "bairesdev"
-  - "quik-hire"
+  - bairesdev
+  - quik-hire
   
-# Países NO Latam
+  # Países NO Latam
   - españa
   - barcelona
   - madrid
   - usa
-  - "united states"
+  - unites states
   - canada
-  - "reino unido"
+  - reino unido
   - uk
   - germany
   - alemania
   - francia
   - europa
-
+  
   # NO vacantes (artículos, blogs, cursos)
-  - "becas"
-  - "becas gratuitas"
-  - "formarse"
-  - "aprender"
-  - "curso"
-  - "guía"
-  - "guia"
-  - "capacitación"
-  - "training"
-  - " Scholarship"
-  - " bootcamp"
-  - "conarsa"
-  - "forbes.co"
-  - "keepcoding"
-  - "blog/"
-  - "articulo"
-  - "/blog"
-  - "/noticias"
-  - "universidades"
-  - "universidad"
-  - "itba"
-  - "platzi"
-  - "codigofacilito"
-  - "articulación"
-  - "articulacion"
-  - "habilidades"
-  - " ECONOMIA"
-  - " | "
-  - "culminaron"
-  - "para destacar"
-  - "cómo"
-  - " nnda-"
-  - "noticia:"
-  - "el mercado"
-  - "en 2025"
-  - "en 2026"
-  - "empleo en"
-  - "trabajo en"
-  - "convocatoria"
+  - becas
+  - becas gratuitas
+  - formarse
+  - aprender
+  - curso
+  - guía
+  - guia
+  - capacitación
+  - training
+  - Scholarship
+  -  bootcamp
+  - conarsa
+  - forbes.co
+  - keepcoding
+  - blog/
+  - articulo
+  - /blog
+  - /noticias
+  - universidades
+  - universidad
+  - itba
+  - platzi
+  - codigofacilito
+  - articulación
+  - articulacion
+  - ECONOMIA
+  - culminaron
+  - para destacar
+  - nnda-
+  - noticia:
+  - empleo en
+  - trabajo en

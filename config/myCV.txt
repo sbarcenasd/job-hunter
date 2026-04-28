@@ -1,0 +1,43 @@
+SEBASTIÁN BÁRCENAS
+FULL STACK DEVELOPER | SAAS & SCALABLE SYSTEMS
+Colombia | Email: sbarcenasd@gmail.com | Tel: 316 747 2923 | LinkedIn: linkedin.com/in/sbarcenasd
+RESUMEN
+Líder de desarrollo Full Stack con +5 años construyendo soluciones SaaS escalables y multi-tenant. Especializado en el ecosistema TypeScript (NestJS, Next.js, Astro) y PostgreSQL, con enfoque en arquitectura y desarrollo end-to-end asistido por AI. Experiencia liderando el ciclo completo de desarrollo: levantamiento de requerimientos, definición técnica, implementación y despliegue en la nube. Experiencia en administración de servidores VPS y entornos en Azure sobre Debian 11, trabajando con arquitecturas modernas y prácticas de testing end-to-end.
+HABILIDADES TÉCNICAS
+Backend: NestJS, Node.js, APIs REST, arquitectura multi-tenant
+Frontend: Next.js, Astro, Angular, Tailwind CSS, shadcn/ui
+Base de datos: PostgreSQL, Drizzle ORM, Neon
+Infraestructura: VPS, Azure (Debian 11), Railway, Vercel
+Testing: Jest (end-to-end)
+Herramientas: GitHub (branching, pull requests), CI/CD básico
+AI & Productividad: Opencode, Gemini, Claude, ChatGPT, AI-assisted development, creación de agentes y skills
+EXPERIENCIA LABORAL
+LÍDER DE DESARROLLO FULL STACK Y CLOUD - Universidad de Manizales
+Septiembre 2024 – Diciembre 2025
+* Lideré el desarrollo de una plataforma SaaS multi-tenant para la gestión de movilidad académica utilizando AI-assisted development.
+* Diseñé la arquitectura backend y la estructura de datos orientada a escalabilidad y mantenibilidad con AI tools (Claude, Gemini, Opencode) para acelerar el diseño técnico y generación de código base.
+* Desarrollé Api REST robusta con NestJS para gestión de usuarios, convenios académicos y procesos de movilidad, implementando autenticación JWT y control de acceso basado en roles (RBAC). 
+* Implementé bases de datos relacionales (PostgreSQL) y NoSQL (MongoDB) para gestión de datos estructurados y documentos académicos. 
+* Coordiné el ciclo completo de desarrollo: requerimientos, definición técnica, implementación y despliegue aplicando AI en documentación técnica y code generation.
+* Aseguré cumplimiento de plazos y estándares de calidad optimizando workflows con AI assistants.
+
+INSTRUCTOR - American Software LLC
+Junio – Octubre 2023 | Marzo – Junio 2024
+* Impartí formación técnica en JavaScript, TypeScript y Angular en modalidad virtual integrando AI coding assistants en el curriculum.
+* Diseñé contenidos formativos orientados a desarrollo frontend moderno utilizando AI (ChatGPT, GitHub Copilot) como herramientas pedagógicas.
+* Guié a estudiantes en resolución de problemas y buenas prácticas incorporando AI-powered debugging y code analysis.
+
+DESARROLLADOR WEB - Universidad Nacional de Colombia
+Noviembre 2023 – Abril 2024
+* Lideré el levantamiento de requerimientos y desarrollo de un portal web institucional con soporte de AI para análisis de requerimientos.
+* Diseñé e implementé un repositorio para investigación educativa y gestión académica utilizando AI tools para optimización de arquitectura.
+* Definí soluciones técnicas alineadas al negocio aprovechando AI assistants (Claude, ChatGPT) para documentación y especificaciones técnicas.
+
+CONSULTOR TÉCNICO - Consensus S.A.
+Agosto 2022 – Abril 2023
+* Desarrollé aplicaciones utilizando C# y Angular con AI-assisted coding para aceleración del desarrollo.
+* Realicé mantenimiento evolutivo y correctivo apoyándome en AI tools (GitHub Copilot, ChatGPT) para debugging y code optimization.
+* Apoyé la optimización de procesos en entornos productivos utilizando AI para análisis de código y refactoring.
+
+EDUCACIÓN
+Administrador de Sistemas Informáticos - Universidad Nacional de Colombia (2018 – 2022)
