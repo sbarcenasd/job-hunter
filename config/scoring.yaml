@@ -1,38 +1,34 @@
-# Scoring - Puntos por match
+# Scoring categories - 0 to 10 points total
+
 scoring:
-  # Stack (más puntos = mejor match)
-  nestjs: 3
-  typescript: 2
-  nextjs: 2
-  graphql: 2
-  saas: 2
+  # Stack Principal (max 4 pts)
+  nestjs: 2
+  typescript: 1.5
+  node: 0.5
+  express: 0.5
+
+  # Frontend (max 2 pts)
+  nextjs: 1
   react: 1
-  vue: 1
-  angular: 1
-  express: 1
-  node: 1
-  astro: 1
-  
-  # Databases
-  postgres: 1
-  postgresql: 1
-  mongodb: 1
-  redis: 1
-  drizzle: 1
-  
-  # DevOps & Cloud
-  docker: 1
-  aws: 1
-  gcp: 1
-  kubernetes: 1
-  vercel: 1
-  railway: 1
-  
-  # Otros idiomas (aprendizaje, 0 puntos)
+  vue: 0.5
+  angular: 0.5
+  astro: 0.3
+
+  # Bonus Tech (max 2 pts)
+  graphql: 0.5
+  saas: 0.5
+  postgres: 0.25
+  postgresql: 0.25
+  mongodb: 0.25
+  redis: 0.25
+  drizzle: 0.25
+  docker: 0.25
+  aws: 0.25
+  gcp: 0.25
+  kubernetes: 0.25
+  vercel: 0.25
+  railway: 0.25
+
+  # Learning only (0 pts)
   python: 0
   go: 0
-  
-  # Ubicación
-  remote: 1
-  latam: 1
-  colombia: 1

@@ -22,14 +22,11 @@ export function scoreJob(job: Job, scoringRules: Record<string, number>): number
     }
   }
 
-  if (job.location === "colombia") s += 3;
-  if (job.location === "remote") s += 2;
-
-  if (job.workMode === "remote") s += 3;
-  else if (job.workMode === "hybrid") s += 2;
+  if (job.workMode === "remote") s += 2;
+  else if (job.workMode === "hybrid") s += 1;
   else if (job.workMode === "presencial") s += 1;
 
-  return s;
+  return Math.min(10, Math.round(s * 100) / 100);
 }
 
 export function filterJobs(
