@@ -2,13 +2,8 @@ import fs from "fs";
 import { Job } from "../types";
 
 export function saveJSON(jobs: Job[], filename: string = "jobs.json"): void {
-  const existing = fs.existsSync(filename) ? JSON.parse(fs.readFileSync(filename, "utf-8")) : [];
-
-  const existingLinks = new Set(existing.map((j: Job) => j.link));
-  const newJobs = jobs.filter((j) => !existingLinks.has(j.link));
-
-  const combined = [...newJobs, ...existing].slice(0, 100);
-  fs.writeFileSync(filename, JSON.stringify(combined, null, 2));
+  // Save only the provided jobs (consistent with markdown export)
+  fs.writeFileSync(filename, JSON.stringify(jobs, null, 2));
 }
 
 export function saveMarkdown(jobs: Job[], filename: string = "jobs.md"): void {
