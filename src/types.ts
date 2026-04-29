@@ -13,7 +13,7 @@ export interface Job {
 export interface FeedSource {
   name: string;
   url: string;
-  type: "rss" | "scraper";
+  type: "rss";
   location: "colombia" | "remote" | "any";
   enabled: boolean;
   keywords?: string[];

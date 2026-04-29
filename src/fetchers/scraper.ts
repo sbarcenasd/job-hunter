@@ -97,52 +97,6 @@ export async function enrichJobFullContent(job: Job): Promise<Job> {
   }
 }
 
-export async function fetchScraperSource(source: FeedSource, keywords: string[]): Promise<Job[]> {
-  const jobs: Job[] = [];
-  if (!source.keywords || source.keywords.length === 0) {
-    source.keywords = keywords;
-  }
-  const location = source.location === "colombia" ? "Colombia" : source.location === "remote" ? "Remote" : "Colombia";
-   
-  for (const keyword of source.keywords) {
-    let url = source.searchUrl || source.url;
-    url = url.replace("{keyword}", encodeURIComponent(keyword));
-    url = url.replace("{location}", encodeURIComponent(location));
-     
-    try {
-      const html = await fetchPageContent(url);
-      if (!html) continue;
-       
-      const $ = cheerio.load(html);
-      $(".job-search-card, .job-card-container").each((_, element) => {
-        const title = $(element).find(".job-card-list__title, .job-card-list__title--link").text().trim() || $(element).find("h3").first().text().trim();
-        let link = $(element).find("a").attr("href") || "";
-        link = link.replace(/https:\/\/www\.linkedin\.comhttps?:\/\/[a-z]+\.linkedin\.com/, "https://www.linkedin.com").replace(/^\/\//, "https://");
-        if (!link.startsWith("http")) link = "https://www.linkedin.com" + link;
-         
-        const company = $(element).find(".job-card-container__company-name, .artdeco-entity-lockup__subtitle").text().trim();
-        const locationText = $(element).find(".job-card-container__metadata-item").text().trim();
-         
-        if (title && link && link.includes("/jobs/view/")) {
-          jobs.push({
-            title: title.trim(),
-            link,
-            content: `${title} ${company} ${locationText}`.toLowerCase(),
-            source: source.name,
-            location: locationText.toLowerCase().includes("colombia") ? "colombia" : "remote",
-            score: 0,
-            date: new Date().toISOString(),
-          });
-        }
-      });
-      await delay(SCRAPER_DELAY);
-    } catch (error) {
-      console.error(`Error fetching ${source.name} (${keyword}):`, (error as Error).message);
-    }
-  }
-  return jobs;
-}
-
 export async function fetchComputrabajo(keywords: string[], maxKeywords: number = 3, maxJobs: number = 10): Promise<Job[]> {
   const baseUrl = "https://co.computrabajo.com/trabajo-de-";
   const jobs: Job[] = [];

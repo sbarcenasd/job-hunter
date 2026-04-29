@@ -2,7 +2,7 @@ import cron from "node-cron";
 import { Job } from "./types";
 import { loadConfig } from "./config/loader";
 import { getEnv } from "./config/env";
-import { runRSS, runComputrabajo, runIndeed, runScraper } from "./runners";
+import { runRSS, runComputrabajo, runIndeed } from "./runners";
 import { runLinkedIn } from "./runners/linkedin";
 import { filterJobs } from "./filters/job";
 import { saveJSON, saveMarkdown, printJobs } from "./utils/export";
@@ -32,11 +32,8 @@ async function main() {
       } else if (source.name.toLowerCase().includes("indeed")) {
         const jobs = await runIndeed(source, keywords, exclude, scoring, workModes, MAX_JOBS_FROM_SCRAPER, MAX_RESULTS);
         allJobs.push(...jobs);
-      } else if (source.name.toLowerCase().includes("linkedin") && !source.name.toLowerCase().includes("manual")) {
+      } else if (source.name.toLowerCase().includes("linkedin")) {
         const jobs = await runLinkedIn(source, keywords, exclude, scoring, workModes, MAX_JOBS_FROM_SCRAPER, MAX_RESULTS);
-        allJobs.push(...jobs);
-      } else if (source.name.toLowerCase().includes("linkedin") && source.name.toLowerCase().includes("manual")) {
-        const jobs = await runScraper(source, keywords, exclude, scoring, workModes, MAX_JOBS_FROM_SCRAPER, MAX_RESULTS);
         allJobs.push(...jobs);
       }
     }
