@@ -43,18 +43,6 @@ sources:
       - nestjs
       - react
   
-  - name: LinkedIn Manual
-    type: scraper
-    location: colombia
-    enabled: false
-    url: https://www.linkedin.com/jobs/search/?keywords={keyword}&location=Colombia
-    keywords:
-      - full stack developer
-      - node.js
-      - typescript
-      - nestjs
-      - react
-  
   - name: Computrabajo
     type: scraper
     location: colombia
